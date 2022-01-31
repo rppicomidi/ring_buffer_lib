@@ -47,7 +47,9 @@
 #else
 #include "pico/sync.h"
 #endif
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 #ifndef RING_BUFFER_ENTER_CRITICAL
 #define RING_BUFFER_ENTER_CRITICAL(X) \
     uint32_t X; \
@@ -205,4 +207,7 @@ RING_BUFFER_SIZE_TYPE ring_buffer_peek_unsafe(ring_buffer_t *ring_buf, uint8_t* 
  * @return the number of bytes read into the vals buffer
  */
 RING_BUFFER_SIZE_TYPE ring_buffer_peek(ring_buffer_t *ring_buf, uint8_t* vals, RING_BUFFER_SIZE_TYPE maxvals);
+#ifdef __cplusplus
+}
+#endif
 #endif //RING_BUFFER_LIB_H
