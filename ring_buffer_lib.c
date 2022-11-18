@@ -141,14 +141,12 @@ bool ring_buffer_is_full(ring_buffer_t *ring_buf)
 
 bool ring_buffer_is_empty_unsafe(ring_buffer_t *ring_buf)
 {
-    uint8_t dummy;
     RING_BUFFER_SIZE_TYPE result = ring_buffer_get_num_bytes_unsafe(ring_buf);
     return result == 0;
 }
 
 bool ring_buffer_is_empty(ring_buffer_t *ring_buf)
 {
-    uint8_t dummy;
     RING_BUFFER_SIZE_TYPE result = ring_buffer_get_num_bytes(ring_buf);
     return result == 0;
 }
