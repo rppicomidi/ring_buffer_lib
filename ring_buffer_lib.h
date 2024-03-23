@@ -104,7 +104,7 @@ void ring_buffer_init(ring_buffer_t *ring_buf, uint8_t* buf, RING_BUFFER_SIZE_TY
  * @param nvals the number of values to push
  * @returns the number of values pushed
  */
-RING_BUFFER_SIZE_TYPE ring_buffer_push_unsafe(ring_buffer_t *ring_buf, uint8_t* vals, RING_BUFFER_SIZE_TYPE nvals);
+RING_BUFFER_SIZE_TYPE ring_buffer_push_unsafe(ring_buffer_t *ring_buf, const uint8_t* vals, RING_BUFFER_SIZE_TYPE nvals);
 
 /**
  * @brief enter a critical section and then put byte in a ring buffer
@@ -112,7 +112,7 @@ RING_BUFFER_SIZE_TYPE ring_buffer_push_unsafe(ring_buffer_t *ring_buf, uint8_t* 
  * @param val the byte to put in the ring buffer
  * @returns the number of values pushed
  */
-RING_BUFFER_SIZE_TYPE ring_buffer_push(ring_buffer_t *ring_buf, uint8_t* vals, RING_BUFFER_SIZE_TYPE nvals);
+RING_BUFFER_SIZE_TYPE ring_buffer_push(ring_buffer_t *ring_buf, const uint8_t* vals, RING_BUFFER_SIZE_TYPE nvals);
 
 /**
  * @brief wait for the spinlock but do not disable interrupts before

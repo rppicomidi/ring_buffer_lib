@@ -52,7 +52,7 @@ void ring_buffer_init(ring_buffer_t *ring_buf, uint8_t* buf, RING_BUFFER_SIZE_TY
 #endif
 }
 
-static RING_BUFFER_SIZE_TYPE ring_buffer_push_core(ring_buffer_t *ring_buf, uint8_t *vals, RING_BUFFER_SIZE_TYPE nvals)
+static RING_BUFFER_SIZE_TYPE ring_buffer_push_core(ring_buffer_t *ring_buf, const uint8_t *vals, RING_BUFFER_SIZE_TYPE nvals)
 {
     assert(ring_buf);
     assert(vals);
@@ -66,7 +66,7 @@ static RING_BUFFER_SIZE_TYPE ring_buffer_push_core(ring_buffer_t *ring_buf, uint
     return npushed;
 }
 
-RING_BUFFER_SIZE_TYPE ring_buffer_push_unsafe(ring_buffer_t *ring_buf, uint8_t *vals, RING_BUFFER_SIZE_TYPE nvals)
+RING_BUFFER_SIZE_TYPE ring_buffer_push_unsafe(ring_buffer_t *ring_buf, const uint8_t *vals, RING_BUFFER_SIZE_TYPE nvals)
 {
 #if RING_BUFFER_MULTICORE_SUPPORT
     spin_lock_unsafe_blocking(ring_buf->crit.spin_lock);
@@ -78,7 +78,7 @@ RING_BUFFER_SIZE_TYPE ring_buffer_push_unsafe(ring_buffer_t *ring_buf, uint8_t *
     return result;
 }
 
-RING_BUFFER_SIZE_TYPE ring_buffer_push(ring_buffer_t *ring_buf, uint8_t *vals, RING_BUFFER_SIZE_TYPE nvals)
+RING_BUFFER_SIZE_TYPE ring_buffer_push(ring_buffer_t *ring_buf, const uint8_t *vals, RING_BUFFER_SIZE_TYPE nvals)
 {
 #if RING_BUFFER_MULTICORE_SUPPORT
     critical_section_enter_blocking(&ring_buf->crit);
